@@ -1,0 +1,396 @@
+{
+    "website_analytics": {
+        "home_page": 15420,
+        "products_page": 8930,
+        "about_page": 3210,
+        "contact_page": 1890,
+        "blog_page": 6750,
+        "pricing_page": 4320,
+        "support_page": 2180
+    },
+    "monthly_sales": {
+        "january": 125000,
+        "february": 98000,
+        "march": 142000,
+        "april": 156000,
+        "may": 178000,
+        "june": 165000,
+        "july": 189000,
+        "august": 201000,
+        "september": 187000,
+        "october": 195000,
+        "november": 220000,
+        "december": 245000
+    },
+    "server_response_times": {
+        "api_endpoint_1": 45,
+        "api_endpoint_2": 67,
+        "api_endpoint_3": 23,
+        "api_endpoint_4": 89,
+        "api_endpoint_5": 34,
+        "database_query": 156,
+        "file_upload": 234,
+        "authentication": 78,
+        "search_function": 112,
+        "payment_processing": 298
+    },
+    "employee_performance": [
+        {
+            "name": "Alice Johnson",
+            "department": "Engineering",
+            "projects_completed": 12,
+            "satisfaction_score": 4.8,
+            "years_experience": 5
+        },
+        {
+            "name": "Bob Smith",
+            "department": "Marketing",
+            "projects_completed": 8,
+            "satisfaction_score": 4.2,
+            "years_experience": 3
+        },
+        {
+            "name": "Carol Davis",
+            "department": "Sales",
+            "projects_completed": 15,
+            "satisfaction_score": 4.9,
+            "years_experience": 7
+        },
+        {
+            "name": "David Wilson",
+            "department": "Engineering",
+            "projects_completed": 10,
+            "satisfaction_score": 4.5,
+            "years_experience": 4
+        },
+        {
+            "name": "Eva Brown",
+            "department": "HR",
+            "projects_completed": 6,
+            "satisfaction_score": 4.3,
+            "years_experience": 2
+        }
+    ],
+    "product_inventory": {
+        "laptops": 245,
+        "smartphones": 189,
+        "tablets": 67,
+        "headphones": 423,
+        "keyboards": 156,
+        "mice": 234,
+        "monitors": 89,
+        "speakers": 145,
+        "webcams": 78,
+        "chargers": 567
+    },
+    "social_media_engagement": {
+        "facebook_likes": 12450,
+        "twitter_followers": 8930,
+        "instagram_followers": 15670,
+        "linkedin_connections": 3420,
+        "youtube_subscribers": 7890,
+        "tiktok_followers": 23450,
+        "pinterest_followers": 4560,
+        "reddit_karma": 1890
+    },
+    "customer_demographics": [
+        {
+            "age_group": "18-25",
+            "count": 1250,
+            "percentage": 25.5,
+            "avg_purchase": 89.50
+        },
+        {
+            "age_group": "26-35",
+            "count": 1890,
+            "percentage": 38.2,
+            "avg_purchase": 156.75
+        },
+        {
+            "age_group": "36-45",
+            "count": 980,
+            "percentage": 19.8,
+            "avg_purchase": 234.20
+        },
+        {
+            "age_group": "46-55",
+            "count": 560,
+            "percentage": 11.3,
+            "avg_purchase": 198.90
+        },
+        {
+            "age_group": "56+",
+            "count": 250,
+            "percentage": 5.2,
+            "avg_purchase": 167.30
+        }
+    ],
+    "quarterly_expenses": {
+        "q1_2024": 89000,
+        "q2_2024": 95000,
+        "q3_2024": 102000,
+        "q4_2024": 87000,
+        "q1_2023": 78000,
+        "q2_2023": 82000,
+        "q3_2023": 91000,
+        "q4_2023": 85000
+    },
+    "bug_reports_by_severity": {
+        "critical": 12,
+        "high": 34,
+        "medium": 89,
+        "low": 156,
+        "trivial": 67
+    },
+    "geographic_sales": {
+        "north_america": 450000,
+        "europe": 320000,
+        "asia_pacific": 280000,
+        "south_america": 95000,
+        "africa": 45000,
+        "middle_east": 78000,
+        "oceania": 32000
+    },
+    "application_downloads": [
+        {
+            "platform": "iOS",
+            "downloads": 125000,
+            "rating": 4.6,
+            "reviews": 8900
+        },
+        {
+            "platform": "Android",
+            "downloads": 189000,
+            "rating": 4.3,
+            "reviews": 12400
+        },
+        {
+            "platform": "Windows",
+            "downloads": 45000,
+            "rating": 4.1,
+            "reviews": 2300
+        },
+        {
+            "platform": "macOS",
+            "downloads": 67000,
+            "rating": 4.7,
+            "reviews": 3400
+        }
+    ],
+    "energy_consumption": {
+        "office_lighting": 2340,
+        "air_conditioning": 4560,
+        "computers": 1890,
+        "servers": 3450,
+        "kitchen_appliances": 890,
+        "security_systems": 567,
+        "elevator": 1230,
+        "heating": 2890
+    },
+    "customer_support_tickets": {
+        "billing_issues": 234,
+        "technical_problems": 456,
+        "feature_requests": 123,
+        "account_access": 189,
+        "product_questions": 345,
+        "refund_requests": 78,
+        "shipping_inquiries": 167,
+        "general_feedback": 89
+    },
+    "marketing_campaign_results": [
+        {
+            "campaign_name": "Summer Sale 2024",
+            "impressions": 125000,
+            "clicks": 8900,
+            "conversions": 456,
+            "cost": 12500
+        },
+        {
+            "campaign_name": "Back to School",
+            "impressions": 89000,
+            "clicks": 6700,
+            "conversions": 234,
+            "cost": 8900
+        },
+        {
+            "campaign_name": "Holiday Special",
+            "impressions": 156000,
+            "clicks": 12300,
+            "conversions": 678,
+            "cost": 15600
+        },
+        {
+            "campaign_name": "New Product Launch",
+            "impressions": 98000,
+            "clicks": 7800,
+            "conversions": 345,
+            "cost": 9800
+        }
+    ],
+    "database_performance": {
+        "query_response_time": 45,
+        "connection_pool_size": 100,
+        "active_connections": 67,
+        "cache_hit_ratio": 89,
+        "disk_usage_gb": 234,
+        "memory_usage_gb": 16,
+        "cpu_utilization": 34,
+        "network_io_mbps": 125
+    },
+    "user_activity_by_hour": {
+        "00:00": 234,
+        "01:00": 189,
+        "02:00": 156,
+        "03:00": 123,
+        "04:00": 98,
+        "05:00": 145,
+        "06:00": 267,
+        "07:00": 456,
+        "08:00": 789,
+        "09:00": 1234,
+        "10:00": 1456,
+        "11:00": 1678,
+        "12:00": 1890,
+        "13:00": 1567,
+        "14:00": 1789,
+        "15:00": 1456,
+        "16:00": 1234,
+        "17:00": 1098,
+        "18:00": 987,
+        "19:00": 876,
+        "20:00": 765,
+        "21:00": 654,
+        "22:00": 543,
+        "23:00": 345
+    },
+    "project_milestones": [
+        {
+            "project_name": "Website Redesign",
+            "completion_percentage": 85,
+            "team_size": 6,
+            "budget_used": 45000,
+            "days_remaining": 12
+        },
+        {
+            "project_name": "Mobile App Development",
+            "completion_percentage": 62,
+            "team_size": 8,
+            "budget_used": 78000,
+            "days_remaining": 45
+        },
+        {
+            "project_name": "Database Migration",
+            "completion_percentage": 95,
+            "team_size": 4,
+            "budget_used": 23000,
+            "days_remaining": 3
+        },
+        {
+            "project_name": "Security Audit",
+            "completion_percentage": 40,
+            "team_size": 3,
+            "budget_used": 15000,
+            "days_remaining": 28
+        }
+    ],
+    "network_traffic": {
+        "http_requests": 156789,
+        "https_requests": 234567,
+        "api_calls": 45678,
+        "file_downloads": 12345,
+        "image_requests": 67890,
+        "css_requests": 23456,
+        "js_requests": 34567,
+        "font_requests": 8901
+    },
+    "content_engagement": {
+        "blog_posts": 1234,
+        "video_views": 45678,
+        "podcast_downloads": 8901,
+        "whitepaper_downloads": 567,
+        "webinar_attendees": 234,
+        "newsletter_opens": 12345,
+        "social_shares": 6789,
+        "comments": 2345
+    },
+    "financial_metrics": [
+        {
+            "metric": "Revenue",
+            "q1": 125000,
+            "q2": 145000,
+            "q3": 167000,
+            "q4": 189000
+        },
+        {
+            "metric": "Profit",
+            "q1": 23000,
+            "q2": 34000,
+            "q3": 45000,
+            "q4": 56000
+        },
+        {
+            "metric": "Expenses",
+            "q1": 102000,
+            "q2": 111000,
+            "q3": 122000,
+            "q4": 133000
+        },
+        {
+            "metric": "Cash Flow",
+            "q1": 15000,
+            "q2": 28000,
+            "q3": 41000,
+            "q4": 52000
+        }
+    ],
+    "security_incidents": {
+        "failed_login_attempts": 2345,
+        "malware_detections": 12,
+        "phishing_attempts": 67,
+        "ddos_attacks": 3,
+        "data_breaches": 0,
+        "unauthorized_access": 8,
+        "suspicious_activities": 156,
+        "firewall_blocks": 45678
+    },
+    "learning_platform_stats": [
+        {
+            "course_name": "Python Programming",
+            "enrollments": 1234,
+            "completion_rate": 78.5,
+            "average_rating": 4.6,
+            "total_hours": 45
+        },
+        {
+            "course_name": "Data Science Basics",
+            "enrollments": 987,
+            "completion_rate": 65.2,
+            "average_rating": 4.3,
+            "total_hours": 60
+        },
+        {
+            "course_name": "Web Development",
+            "enrollments": 1567,
+            "completion_rate": 72.8,
+            "average_rating": 4.5,
+            "total_hours": 80
+        },
+        {
+            "course_name": "Machine Learning",
+            "enrollments": 678,
+            "completion_rate": 58.9,
+            "average_rating": 4.7,
+            "total_hours": 120
+        }
+    ],
+    "environmental_impact": {
+        "carbon_footprint_tons": 234,
+        "energy_saved_kwh": 12345,
+        "water_usage_liters": 45678,
+        "waste_recycled_kg": 1890,
+        "paper_saved_sheets": 23456,
+        "trees_planted": 156,
+        "renewable_energy_percentage": 67,
+        "emission_reduction_percentage": 23
+    }
+}
