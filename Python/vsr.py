@@ -31,7 +31,9 @@ class RepresentationConfig:
     """Manages representation configuration for data files."""
     
     def __init__(self, config_dir: str = "rep_saved"):
-        self.config_dir = Path(config_dir)
+        # Make config directory relative to script location, not current working directory
+        script_dir = Path(__file__).parent
+        self.config_dir = script_dir / config_dir
         self.config_dir.mkdir(exist_ok=True)
     
     def _get_file_hash(self, filepath: str) -> str:
