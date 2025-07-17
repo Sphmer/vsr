@@ -1,6 +1,6 @@
 # VSR - Terminal Data Visualizer
 
-**Version: 0.9.0**
+**Version: 0.9.1**
 
 A comprehensive, vim-like terminal application for visualizing data from JSON and CSV files with advanced features including tree view, arrow key navigation, and intelligent configuration management.
 
@@ -24,7 +24,9 @@ A comprehensive, vim-like terminal application for visualizing data from JSON an
 - **Smart Representation Configs**: Automatically remembers how you prefer to view each data file
 - **Page-by-Page Configuration**: Configure multiple data sets individually with forward/backward navigation
 - **Skip Data Sets**: Choose to skip specific data sets during configuration to omit them from display
-- **Column Selection**: Interactive column selection for table views with visual checkboxes
+- **Manual Column Ordering**: Interactive column selection with manual ordering - columns appear in the order you select them
+- **Visual Selection Feedback**: Shows numbered indicators (1), (2), (3) next to manually selected columns
+- **Preserved CSV Column Order**: CSV files maintain their original column order from headers
 - **Field Selection**: Smart field selection for bar charts with multiple numeric fields
 - **Configuration Persistence**: Saves preferences with file metadata and automatic cleanup
 
@@ -42,6 +44,13 @@ A comprehensive, vim-like terminal application for visualizing data from JSON an
 - **Mixed Content**: Each slide can contain multiple data sets with different visualization types
 - **Presentation Mode**: Create slide-based presentations of your data
 - **Smart Interface**: Header shows current slide info, footer shows navigation options
+
+### 🔄 Recent Improvements (v0.9.1)
+- **Manual Column Selection Order**: Columns now appear in the exact order you select them manually
+- **Visual Order Indicators**: Selected columns show numbered indicators (1), (2), (3) for clarity
+- **CSV Column Order Preservation**: CSV files maintain their original header column order
+- **Enhanced User Control**: Better control over table column arrangement and display
+- **Order Status Messages**: Clear feedback about whether using manual or default column ordering
 
 ### 🔧 Technical Excellence
 - **Zero Dependencies**: Uses only standard Python libraries
@@ -69,20 +78,12 @@ python vsr.py
 Use ↑/↓ arrow keys to navigate, ENTER to select, 'q' to quit
 Found 3 valid file(s):
 
-  ✅ comprehensive_data.json
-     Path: /path/to/examples/comprehensive_data.json
-     Size: 15.2KB | Configured: 2025-01-11 14:30
-     Representations: users:table, sales:bars, metrics:tree
+  /path/to/examples/comprehensive_data.json
 
-→ ✅ nested_tree_data.json  ← Current selection
-     Path: /path/to/examples/nested_tree_data.json
-     Size: 3.4KB | Configured: 2025-01-11 12:15
-     Representations: communication:tree, server_stats:table
+→ /path/to/examples/nested_tree_data.json
 
-  ✅ sample_data.csv
-     Path: /path/to/examples/sample_data.csv
-     Size: 1.8KB | Configured: 2025-01-10 16:45
-     Representations: data:table
+  /path/to/examples/sample_data.csv
+
 
 Options:
   [↑/↓] - Navigate files
@@ -96,6 +97,34 @@ Options:
 ```bash
 python vsr.py --version
 python vsr.py -v
+```
+
+### Table View Visualization
+Display data in professional table format with Unicode box-drawing characters:
+```
+📊 Employee Data
+==================================================
+┌─────────────────┬─────┬──────────────┬────────────┐
+│ name            │ age │ department   │ salary     │
+├─────────────────┼─────┼──────────────┼────────────┤
+│ Alice Johnson   │  28 │ Engineering  │     75000  │
+│ Bob Smith       │  35 │ Marketing    │     65000  │
+│ Carol Davis     │  42 │ Engineering  │     85000  │
+│ David Wilson    │  31 │ Sales        │     58000  │
+│ Eva Brown       │  29 │ HR           │     62000  │
+└─────────────────┴─────┴──────────────┴────────────┘
+```
+
+### Bar Chart Visualization
+Visualize numeric data with horizontal ASCII bar charts:
+```
+📊 Sales Performance
+==================================================
+Alice Johnson   ████████████████████████████████████████ 125000
+Bob Smith       ████████████████████████████████         95000
+Carol Davis     ████████████████████████████████████████ 140000
+David Wilson    ████████████████████████                 78000
+Eva Brown       ██████████████████████████████████       110000
 ```
 
 ### Tree View Visualization
@@ -245,3 +274,7 @@ Showing lines 1-15 of 28
 ## Testing
 
 The application includes a comprehensive test suite covering core functionality, configuration management, and all interactive interfaces.
+
+## License
+
+This project is open source and available under the MIT License.
