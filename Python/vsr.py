@@ -247,14 +247,19 @@ class VSRApp:
                 elif isinstance(value, list) and len(value) > 0:
                     # List data set (like "user_types")
                     numeric_fields = self._get_numeric_fields_from_list(value)
-                    # Get all available columns from the first item
+                    # Get all available columns - preserve order from first item for CSV files
                     all_keys = []
                     if value and isinstance(value[0], dict):
-                        all_keys_set = set()
+                        # For CSV files, preserve the original column order from the first row
+                        first_item_keys = [key for key in value[0].keys() if not key.startswith('_')]
+                        # Collect any additional keys from other rows (for robustness)
+                        all_keys_set = set(first_item_keys)
                         for item in value:
                             if isinstance(item, dict):
-                                all_keys_set.update(item.keys())
-                        all_keys = [key for key in all_keys_set if not key.startswith('_')]
+                                all_keys_set.update(key for key in item.keys() if not key.startswith('_'))
+                        # Use first item's key order as base, then append any additional keys
+                        all_keys = first_item_keys + [key for key in all_keys_set if key not in first_item_keys]
+                        
                     
                     data_sets[key] = {
                         'data': value,
@@ -266,14 +271,18 @@ class VSRApp:
         elif isinstance(data, list) and len(data) > 0:
             # Single data set
             numeric_fields = self._get_numeric_fields_from_list(data)
-            # Get all available columns
+            # Get all available columns - preserve order from first item for CSV files
             all_keys = []
             if data and isinstance(data[0], dict):
-                all_keys_set = set()
+                # For CSV files, preserve the original column order from the first row
+                first_item_keys = [key for key in data[0].keys() if not key.startswith('_')]
+                # Collect any additional keys from other rows (for robustness)
+                all_keys_set = set(first_item_keys)
                 for item in data:
                     if isinstance(item, dict):
-                        all_keys_set.update(item.keys())
-                all_keys = [key for key in all_keys_set if not key.startswith('_')]
+                        all_keys_set.update(key for key in item.keys() if not key.startswith('_'))
+                # Use first item's key order as base, then append any additional keys
+                all_keys = first_item_keys + [key for key in all_keys_set if key not in first_item_keys]
             
             data_sets["data"] = {
                 'data': data,
