@@ -875,7 +875,7 @@ class VSRApp:
                     return 'space'
                 else:
                     try:
-                        return key.decode('utf-8').lower()
+                        return key.decode('utf-8')  # Removed .lower() to preserve case
                     except UnicodeDecodeError:
                         return 'unknown'
             else:  # Unix/Linux/Mac
@@ -902,7 +902,7 @@ class VSRApp:
                     elif key == ' ':  # Space
                         return 'space'
                     else:
-                        return key.lower()
+                        return key  # Removed .lower() to preserve case
                 finally:
                     termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         except Exception:
