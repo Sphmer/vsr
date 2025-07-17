@@ -513,7 +513,7 @@ class VSRApp:
                 
             elif choice == 'left' and current_index > 0:
                 return 'previous'
-            elif choice == 'right' and current_index < total_count - 1:
+            elif choice == 'right':
                 return 'next'
             elif choice == 'q':
                 return 'quit'
