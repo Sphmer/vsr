@@ -705,6 +705,7 @@ class VSRApp:
             print(f"📋 Select columns to display for '{set_name}'")
             print("=" * 50)
             print("Use ↑/↓ arrow keys to navigate, SPACE to select/deselect, ENTER to confirm")
+            print("Additional: [a] Select all, [n] Select none, [q] Quit")
             print("At least 2 columns must be selected\n")
             
             # Display columns with selection status
