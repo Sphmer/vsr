@@ -709,6 +709,9 @@ class VSRApp:
     def _ask_column_selection(self, set_name: str, columns: List[str]) -> List[str]:
         """Ask user to select columns for table view using arrow keys and space bar."""
         selected = [False] * len(columns)  # Track selected columns
+        selection_order = {}  # Track order of manual selection: column_index -> order_number
+        selection_counter = 0  # Counter for manual selections
+        use_default_order = False  # Flag to indicate if we should use default order
         current_index = 0  # Current cursor position
         
         while True:
@@ -717,17 +720,29 @@ class VSRApp:
             print("=" * 50)
             print("Use ↑/↓ arrow keys to navigate, SPACE to select/deselect, ENTER to confirm")
             print("Additional: [a] Select all, [n] Select none, [q] Quit")
-            print("At least 2 columns must be selected\n")
+            print("At least 2 columns must be selected")
+            print("Manual selection order determines table column order\n")
             
-            # Display columns with selection status
+            # Display columns with selection status and order numbers
             for i, column in enumerate(columns):
                 cursor = "→ " if i == current_index else "  "
                 checkbox = "☑" if selected[i] else "☐"
-                print(f"{cursor}{checkbox} {column}")
+                
+                # Show order number for manually selected columns
+                order_display = ""
+                if selected[i] and not use_default_order and i in selection_order:
+                    order_display = f" ({selection_order[i]})"
+                
+                print(f"{cursor}{checkbox} {column}{order_display}")
             
-            # Show current selection count
+            # Show current selection count and order info
             selected_count = sum(selected)
             print(f"\nSelected: {selected_count}/{len(columns)} columns")
+            
+            if use_default_order and selected_count > 0:
+                print("📄 Using default column order (select all/none was used)")
+            elif selection_order and not use_default_order:
+                print("🔢 Using manual selection order")
             
             if selected_count >= 2:
                 print("✓ Ready to confirm (press ENTER)")
@@ -742,11 +757,38 @@ class VSRApp:
             elif key == 'down' and current_index < len(columns) - 1:
                 current_index += 1
             elif key == 'space':
-                selected[current_index] = not selected[current_index]
+                # Manual selection/deselection
+                if selected[current_index]:
+                    # Deselecting - remove from order and adjust other orders
+                    if current_index in selection_order:
+                        removed_order = selection_order[current_index]
+                        del selection_order[current_index]
+                        # Adjust order numbers for items that came after the removed one
+                        for idx in selection_order:
+                            if selection_order[idx] > removed_order:
+                                selection_order[idx] -= 1
+                        selection_counter -= 1
+                    selected[current_index] = False
+                else:
+                    # Selecting - add to order
+                    selected[current_index] = True
+                    selection_counter += 1
+                    selection_order[current_index] = selection_counter
+                
+                # Reset default order flag when manually selecting
+                use_default_order = False
+                
             elif key == 'enter':
                 if selected_count >= 2:
-                    # Return selected columns in original order
-                    selected_columns = [columns[i] for i in range(len(columns)) if selected[i]]
+                    # Return selected columns in appropriate order
+                    if use_default_order or not selection_order:
+                        # Use default order (original column order)
+                        selected_columns = [columns[i] for i in range(len(columns)) if selected[i]]
+                    else:
+                        # Use manual selection order
+                        ordered_indices = sorted(selection_order.keys(), key=lambda x: selection_order[x])
+                        selected_columns = [columns[i] for i in ordered_indices]
+                    
                     print(f"\n✓ Selected columns: {', '.join(selected_columns)}")
                     import time
                     time.sleep(1)  # Brief confirmation display
@@ -758,8 +800,14 @@ class VSRApp:
                     time.sleep(1)
             elif key == 'a':  # 'a' for select all
                 selected = [True] * len(columns)
+                selection_order = {}  # Clear manual selection order
+                selection_counter = 0
+                use_default_order = True  # Use default order
             elif key == 'n':  # 'n' for select none
                 selected = [False] * len(columns)
+                selection_order = {}  # Clear manual selection order
+                selection_counter = 0
+                use_default_order = True  # Reset to default order for future selections
             elif key == 'q':  # Allow quit
                 return None  # Return None to indicate user quit
     
