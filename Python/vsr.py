@@ -8,7 +8,7 @@ if sys.platform == "win32":
     sys.stdout.reconfigure(encoding='utf-8')
 
 # Version information
-__version__ = "0.9.0"
+__version__ = "0.9.1"
 
 """
 VSR - A minimalistic terminal data visualizer
