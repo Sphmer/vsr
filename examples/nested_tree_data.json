@@ -1,0 +1,76 @@
+{
+  "communication_metrics": {
+    "telegram": {
+      "sent": 3123123,
+      "received": 134123423,
+      "channels": {
+        "private": 245,
+        "groups": 89,
+        "broadcasts": 12
+      }
+    },
+    "website": {
+      "views": 12344,
+      "unique_users": 6345,
+      "pages": {
+        "home": 4521,
+        "about": 2341,
+        "contact": 892
+      }
+    },
+    "email": {
+      "sent": 45234,
+      "bounced": 234,
+      "opened": 38123,
+      "campaigns": {
+        "newsletter": {
+          "sent": 15234,
+          "opened": 12456
+        },
+        "promotions": {
+          "sent": 8923,
+          "opened": 5234
+        }
+      }
+    }
+  },
+  "server_stats": {
+    "api": {
+      "requests": 2345234,
+      "errors": 423,
+      "response_time_ms": 45.2,
+      "endpoints": {
+        "users": {
+          "calls": 892345,
+          "avg_time_ms": 23.4
+        },
+        "products": {
+          "calls": 234523,
+          "avg_time_ms": 67.8
+        }
+      }
+    },
+    "database": {
+      "connections": 234,
+      "queries": 892345,
+      "cache_hits": 782345,
+      "performance": {
+        "read_ms": 12.3,
+        "write_ms": 45.6
+      }
+    }
+  },
+  "financial_data": {
+    "revenue": {
+      "q1": 234523,
+      "q2": 345234,
+      "q3": 456234,
+      "q4": 567234
+    },
+    "expenses": {
+      "salaries": 123456,
+      "infrastructure": 45234,
+      "marketing": 23456
+    }
+  }
+}

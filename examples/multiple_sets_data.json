@@ -1,0 +1,27 @@
+{
+    "number_of_visitors": {
+        "index_page": 123,
+        "about_page": 456,
+        "contact_page": 789
+    },
+    "unique_users": {
+        "landing_page": 42,
+        "profile": 12,
+        "settings": 7
+    },
+    "links_ckicked": {
+        "seo": 12365,
+        "social": 12365,
+        "other": 12365
+    },
+    "user_types": [
+        {
+            "name": "new",
+            "value": 123
+        },
+        {
+            "name": "returning",
+            "value": 456
+        }
+    ]
+}

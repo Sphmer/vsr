@@ -1,0 +1,204 @@
+# Build directories
+build/
+bin/
+obj/
+out/
+
+# Compiled executables
+*.exe
+*.out
+*.app
+VSR
+VSR.exe
+test_*
+!test_*.cpp
+!test_*.h
+
+# Object files
+*.o
+*.obj
+*.lo
+*.slo
+*.ko
+*.elf
+
+# Shared libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+*.dll.a
+
+# Static libraries
+*.a
+*.la
+*.lib
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# IDE and editor files
+.vscode/
+.vs/
+*.vcxproj*
+*.sln
+*.suo
+*.user
+*.ncb
+*.aps
+*.pdb
+*.ilk
+*.meta
+*.pch
+*.pch.*
+*.ipch
+*.idb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+# Code::Blocks
+*.depend
+*.layout
+*.cbp
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+
+# Temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Configuration files (user-specific)
+.vsr_configs/
+*.config
+*.ini
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.ilk
+
+# Profiling files
+*.prof
+*.gmon.out
+*.gcov
+*.gcda
+*.gcno
+
+# Memory debugging
+*.memcheck
+*.valgrind
+
+# Package files
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Test output
+test_output/
+test_results/
+*.test
+
+# Documentation generated files
+docs/html/
+docs/latex/
+*.pdf
+!README.md
+
+# Coverage reports
+coverage/
+*.coverage
+htmlcov/
+
+# Clang specific
+.clang_complete
+.clang-format
+compile_commands.json
+
+# GCC specific
+*.gch
+
+# MinGW specific
+*.def
+*.exp
+*.map
+
+# Visual Studio specific
+*.VC.db
+*.VC.opendb
+*.VC.VC.opendb
+*.vcxproj.filters
+*.vcxproj.user
+.vs/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.vim
+.vimrc.local
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Tags
+tags
+TAGS
+.tags
+.TAGS
+
+# Local environment
+.env
+.env.local
+
+# App specific
+rep_saved/
