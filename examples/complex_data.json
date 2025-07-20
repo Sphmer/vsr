@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+            "name": "John Doe",
+            "age": 30,
+            "city": "New York"
+        },
+        {
+            "name": "Jane Doe",
+            "age": 25,
+            "city": "Los Angeles"
+        },
+        {
+            "name": "Jane BeePeeDoe",
+            "age": 42,
+            "city": "Cansas"
+        },
+        {
+            "name": "John Connor",
+            "age": 21,
+            "city": "Las Vegas"
+        }
+    ]
+}

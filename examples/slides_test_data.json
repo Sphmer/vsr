@@ -1,0 +1,23 @@
+{
+  "users": [
+    {"name": "Alice", "age": 30, "salary": 75000, "department": "Engineering"},
+    {"name": "Bob", "age": 25, "salary": 65000, "department": "Marketing"},
+    {"name": "Charlie", "age": 35, "salary": 85000, "department": "Engineering"},
+    {"name": "Diana", "age": 28, "salary": 70000, "department": "Sales"}
+  ],
+  "products": [
+    {"product_name": "Widget A", "price": 29.99, "stock": 150, "category": "Electronics"},
+    {"product_name": "Widget B", "price": 39.99, "stock": 75, "category": "Electronics"},
+    {"product_name": "Gadget X", "price": 19.99, "stock": 200, "category": "Accessories"}
+  ],
+  "sales": [
+    {"month": "January", "revenue": 125000, "units_sold": 450},
+    {"month": "February", "revenue": 135000, "units_sold": 480},
+    {"month": "March", "revenue": 142000, "units_sold": 520}
+  ],
+  "departments": [
+    {"name": "Engineering", "employees": 15, "budget": 2500000},
+    {"name": "Marketing", "employees": 8, "budget": 800000},
+    {"name": "Sales", "employees": 12, "budget": 1200000}
+  ]
+}
