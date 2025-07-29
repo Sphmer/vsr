@@ -25,9 +25,10 @@ namespace utils {
 
 // String utilities
 std::string trim(const std::string& str) {
-    size_t first = str.find_first_not_of(' ');
+    const std::string whitespace = " \t\n\r\f\v";
+    size_t first = str.find_first_not_of(whitespace);
     if (first == std::string::npos) return "";
-    size_t last = str.find_last_not_of(' ');
+    size_t last = str.find_last_not_of(whitespace);
     return str.substr(first, (last - first + 1));
 }
 
@@ -286,6 +287,16 @@ void setConsoleTitle(const std::string& title) {
 #else
     std::cout << "\033]0;" << title << "\007" << std::flush;
 #endif
+}
+
+void clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+    // Alternative method using ANSI escape codes for better compatibility
+    std::cout << "\033[2J\033[H" << std::flush;
 }
 
 // Data conversion utilities

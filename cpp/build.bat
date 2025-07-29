@@ -46,7 +46,7 @@ echo Building with Visual Studio compiler...
 if not exist build mkdir build
 cd build
 
-cl /std:c++17 /EHsc /I..\include /Fe:VSR.exe ..\src\*.cpp
+cl /std:c++17 /EHsc /I..\include /Fe:vsr.exe ..\src\*.cpp
 if %errorlevel% == 0 (
     echo Main VSR executable built successfully!
 ) else (
@@ -69,7 +69,7 @@ echo Building with MinGW g++ compiler...
 if not exist build mkdir build
 cd build
 
-g++ -std=c++17 -O2 -I..\include -o VSR.exe ..\src\*.cpp
+g++ -std=c++17 -O2 -I..\include -o vsr.exe ..\src\*.cpp
 if %errorlevel% == 0 (
     echo Main VSR executable built successfully!
 ) else (
@@ -92,7 +92,7 @@ echo Building with Clang compiler...
 if not exist build mkdir build
 cd build
 
-clang++ -std=c++17 -O2 -I..\include -o VSR.exe ..\src\*.cpp
+clang++ -std=c++17 -O2 -I..\include -o vsr.exe ..\src\*.cpp
 if %errorlevel% == 0 (
     echo Main VSR executable built successfully!
 ) else (
@@ -121,21 +121,21 @@ if exist test_simple.exe (
 )
 
 :: Test main VSR executable
-if exist VSR.exe (
+if exist vsr.exe (
     echo Testing main VSR executable...
-    echo VSR.exe --help
-    VSR.exe --help
+    echo vsr.exe --help
+    vsr.exe --help
     echo.
     
     echo Testing with sample data...
     if exist "..\..\examples\sample_data.csv" (
-        echo VSR.exe ..\..\examples\sample_data.csv
-        VSR.exe ..\..\examples\sample_data.csv
+        echo vsr.exe ..\..\examples\sample_data.csv
+        vsr.exe ..\..\examples\sample_data.csv
     ) else (
         echo Sample data not found at ..\..\examples\sample_data.csv
     )
 ) else (
-    echo VSR.exe not found
+    echo vsr.exe not found
 )
 
 cd ..
@@ -144,7 +144,7 @@ echo.
 echo Build and test completed!
 echo.
 echo Available executables in build\ directory:
-if exist build\VSR.exe echo - VSR.exe (main application)
+if exist build\vsr.exe echo - vsr.exe (main application)
 if exist build\test_simple.exe echo - test_simple.exe (simple test)
 if exist build\test_utils.exe echo - test_utils.exe (utility tests)
 if exist build\test_data_loader.exe echo - test_data_loader.exe (data loader tests)

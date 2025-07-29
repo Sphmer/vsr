@@ -56,7 +56,7 @@ cmake --build . --config Release
 
 #### Windows (MinGW-w64)
 ```bash
-g++ -std=c++17 -O2 -I./include -o VSR.exe src/*.cpp
+g++ -std=c++17 -O2 -I./include -o vsr.exe src/*.cpp
 ```
 
 #### macOS/Linux
@@ -211,7 +211,7 @@ If the executable runs but produces no output:
 1. **Console Encoding**: The application automatically enables UTF-8 console output
 2. **Runtime Libraries**: Ensure MinGW runtime DLLs are in PATH or use static linking:
    ```bash
-   g++ -static -std=c++17 -O2 -I./include -o VSR.exe src/*.cpp
+   g++ -static -std=c++17 -O2 -I./include -o vsr.exe src/*.cpp
    ```
 3. **Alternative Execution**: Try running from Command Prompt instead of PowerShell
 4. **Visual Studio**: Consider using Visual Studio compiler instead of MinGW

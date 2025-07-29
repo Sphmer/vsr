@@ -45,7 +45,7 @@ int main() {
         std::cout << "Checking main VSR executable..." << std::endl;
         total_tests++;
         
-        if (utils::fileExists("VSR.exe") || utils::fileExists("VSR")) {
+        if (utils::fileExists("vsr.exe") || utils::fileExists("vsr")) {
             std::cout << "✓ Main VSR executable found" << std::endl;
             passed_tests++;
         } else {
@@ -73,15 +73,15 @@ int main() {
         std::cout << "   cmake .. && make" << std::endl;
         std::cout << std::endl;
         std::cout << "2. With g++ directly:" << std::endl;
-        std::cout << "   g++ -std=c++17 -O2 -I./include -o VSR.exe src/*.cpp" << std::endl;
+        std::cout << "   g++ -std=c++17 -O2 -I./include -o vsr.exe src/*.cpp" << std::endl;
         std::cout << "   g++ -std=c++17 -I./include -o test_utils.exe tests/test_utils.cpp src/utils.cpp" << std::endl;
         std::cout << "   (repeat for other test files)" << std::endl;
         std::cout << std::endl;
         std::cout << "Usage Examples:" << std::endl;
         std::cout << "===============" << std::endl;
-        std::cout << "   ./VSR.exe ../examples/sample_data.csv" << std::endl;
-        std::cout << "   ./VSR.exe ../examples/complex_data.json" << std::endl;
-        std::cout << "   ./VSR.exe ../examples/flat_data.json" << std::endl;
+        std::cout << "   ./vsr.exe ../examples/sample_data.csv" << std::endl;
+        std::cout << "   ./vsr.exe ../examples/complex_data.json" << std::endl;
+        std::cout << "   ./vsr.exe ../examples/flat_data.json" << std::endl;
         std::cout << std::endl;
         
         std::cout << "Press any key to exit..." << std::endl;

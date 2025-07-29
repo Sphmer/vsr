@@ -30,6 +30,9 @@ int main(int argc, char* argv[]) {
         std::cout.setf(std::ios::unitbuf);
         std::cerr.setf(std::ios::unitbuf);
         
+        // Clear terminal screen from previous output
+        utils::clearScreen();
+        
         // Print startup message to verify console output works
         std::cout << "VSR C++ v" << VSR_VERSION << " starting..." << std::endl;
         

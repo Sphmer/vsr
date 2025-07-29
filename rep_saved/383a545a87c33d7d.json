@@ -1,0 +1,11 @@
+{
+  "people": {
+    "selected_columns": [
+      "age",
+      "city",
+      "name"
+    ],
+    "slide_number": 1,
+    "view_type": "mixed"
+  }
+}

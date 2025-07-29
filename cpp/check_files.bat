@@ -65,9 +65,9 @@ echo.
 echo Build Instructions:
 echo ===================
 echo 1. Install a C++ compiler (MinGW-w64, Visual Studio, or Clang)
-echo 2. For MinGW-w64: g++ -std=c++17 -O2 -Iinclude -o build\VSR.exe src\*.cpp
-echo 3. For Visual Studio: cl /std:c++17 /EHsc /Iinclude /Fe:build\VSR.exe src\*.cpp
-echo 4. Test with: build\VSR.exe ..\..\examples\sample_data.csv
+echo 2. For MinGW-w64: g++ -std=c++17 -O2 -Iinclude -o build\vsr.exe src\*.cpp
+echo 3. For Visual Studio: cl /std:c++17 /EHsc /Iinclude /Fe:build\vsr.exe src\*.cpp
+echo 4. Test with: build\vsr.exe ..\..\examples\sample_data.csv
 echo.
 
 pause

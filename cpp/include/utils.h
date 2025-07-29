@@ -49,6 +49,7 @@ std::string formatTimestamp(const std::chrono::system_clock::time_point& time);
 void enableUTF8Console();
 std::pair<int, int> getConsoleSize();
 void setConsoleTitle(const std::string& title);
+void clearScreen();
 
 // Data conversion utilities
 std::string anyToString(const std::any& value);
