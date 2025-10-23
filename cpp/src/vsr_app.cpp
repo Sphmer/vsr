@@ -2,8 +2,13 @@
 #include "utils.h"
 #include <iostream>
 #include <algorithm>
+#include <thread>
+#include <chrono>
 
-VSRApp::VSRApp(const std::string& filename) 
+// Initialize static member
+std::atomic<bool> VSRApp::terminal_resized_(false);
+
+VSRApp::VSRApp(const std::string& filename)
     : filename_(filename)
     , view_mode_("mixed")
     , scroll_offset_(0)
@@ -13,14 +18,19 @@ VSRApp::VSRApp(const std::string& filename)
     , current_slide_(1)
     , total_slides_(1)
     , config_loaded_(false)
+    , last_terminal_width_(80)
+    , last_terminal_height_(24)
     , isRunning_(false) {
-    
+
     // Initialize components
     data_loader_ = std::make_unique<DataLoader>();
     data_processor_ = std::make_unique<DataProcessor>();
     config_manager_ = std::make_unique<ConfigManager>();
     display_manager_ = std::make_unique<DisplayManager>();
     input_handler_ = std::make_unique<InputHandler>();
+
+    // Setup resize handler
+    setupResizeHandler();
 }
 
 bool VSRApp::initialize() {
@@ -60,27 +70,42 @@ bool VSRApp::initialize() {
 
 void VSRApp::run() {
     isRunning_ = true;
-    
+
     utils::log(utils::LogLevel::INFO, "Starting VSR main loop");
-    
+
+    // Store initial terminal size
+    getTerminalSize();
+    last_terminal_width_ = terminal_width_;
+    last_terminal_height_ = terminal_height_;
+
     // Clear screen and show initial display
     clearScreen();
     displayScreen();
-    
+
     // Main application loop
     while (isRunning_) {
         try {
+            // Check for terminal resize (works on both Unix and Windows)
+            if (checkAndHandleResize()) {
+                // Terminal was resized, show message and redraw
+                clearScreen();
+                std::cout << "🔄 Terminal resized to " << terminal_width_ << "x" << terminal_height_ << std::endl;
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                clearScreen();
+                displayScreen();
+            }
+
             // Get user input
             std::string key = input_handler_->getKeyInput();
-            
+
             // Handle the input
             if (!handleInput(key)) {
                 break; // User requested quit
             }
-            
+
             // Update display
             displayScreen();
-            
+
         } catch (const std::exception& e) {
             utils::log(utils::LogLevel::ERROR_LEVEL, "Exception in main loop: " + std::string(e.what()));
             std::cout << "Error: " << e.what() << std::endl;
@@ -88,7 +113,7 @@ void VSRApp::run() {
             input_handler_->getKeyInput();
         }
     }
-    
+
     utils::log(utils::LogLevel::INFO, "VSR main loop ended");
 }
 
@@ -358,4 +383,69 @@ void VSRApp::organizeSlides() {
     }
     
     utils::log(utils::LogLevel::INFO, "Organized " + std::to_string(total_slides_) + " slides");
+}
+
+void VSRApp::setupResizeHandler() {
+#ifndef _WIN32
+    // Unix/Linux/macOS: Use SIGWINCH signal
+    struct sigaction sa;
+    sa.sa_handler = handleResizeSignal;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = SA_RESTART;
+    if (sigaction(SIGWINCH, &sa, nullptr) == 0) {
+        utils::log(utils::LogLevel::INFO, "SIGWINCH resize handler installed");
+    } else {
+        utils::log(utils::LogLevel::WARNING, "Failed to install SIGWINCH handler");
+    }
+#else
+    // Windows: Will poll during input checking
+    utils::log(utils::LogLevel::INFO, "Windows resize detection via polling");
+#endif
+}
+
+void VSRApp::handleResizeSignal(int signum) {
+    // Signal handler - just set the flag
+#ifndef _WIN32
+    if (signum == SIGWINCH) {
+        terminal_resized_.store(true);
+    }
+#else
+    (void)signum;  // Unused on Windows
+#endif
+}
+
+bool VSRApp::checkAndHandleResize() {
+    // Check if signal was triggered (Unix) or poll size (Windows)
+#ifdef _WIN32
+    // Windows: Check terminal size directly
+    auto size = utils::getConsoleSize();
+    if (size.first != last_terminal_width_ || size.second != last_terminal_height_) {
+        terminal_resized_.store(true);
+    }
+#endif
+
+    // Check if resize flag is set
+    if (terminal_resized_.load()) {
+        terminal_resized_.store(false);
+
+        // Get new terminal size
+        auto size = utils::getConsoleSize();
+        int new_width = size.first;
+        int new_height = size.second;
+
+        // Only handle if actually changed
+        if (new_width != last_terminal_width_ || new_height != last_terminal_height_) {
+            last_terminal_width_ = new_width;
+            last_terminal_height_ = new_height;
+            terminal_width_ = new_width;
+            terminal_height_ = new_height;
+            max_display_rows_ = std::max(5, terminal_height_ - 10);
+
+            utils::log(utils::LogLevel::INFO,
+                "Terminal resized to " + std::to_string(new_width) + "x" + std::to_string(new_height));
+            return true;
+        }
+    }
+
+    return false;
 }

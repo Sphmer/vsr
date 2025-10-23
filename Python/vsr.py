@@ -8,7 +8,7 @@ if sys.platform == "win32":
     sys.stdout.reconfigure(encoding='utf-8')
 
 # Version information
-__version__ = "0.9.1"
+__version__ = "0.9.2"
 
 """
 VSR - A minimalistic terminal data visualizer
@@ -23,6 +23,7 @@ import argparse
 import os
 import shutil
 import hashlib
+import signal
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 
@@ -159,7 +160,7 @@ class RepresentationConfig:
 
 class VSRApp:
     """Main VSR application with ASCII-only interface."""
-    
+
     def __init__(self, filename: str):
         self.filename = filename
         self.data = None
@@ -177,7 +178,50 @@ class VSRApp:
         self.current_slide = 1
         self.total_slides = 1
         self.data_set_preferences = {}  # Store preferences with slide info
+        # Terminal resize detection
+        self.terminal_size_changed = False
+        self._setup_resize_handler()
         
+    def _setup_resize_handler(self):
+        """Setup terminal resize detection handler."""
+        if sys.platform != "win32":
+            # Unix/Linux/macOS: Use SIGWINCH signal
+            try:
+                signal.signal(signal.SIGWINCH, self._handle_resize_signal)
+            except (AttributeError, ValueError):
+                # SIGWINCH not available on this platform
+                pass
+        # Windows: Will check for resize during input polling
+
+    def _handle_resize_signal(self, signum, frame):
+        """Signal handler called when terminal is resized (Unix only)."""
+        self.terminal_size_changed = True
+
+    def _check_and_handle_resize(self) -> bool:
+        """
+        Check if terminal was resized and handle it.
+        Returns True if resize was detected and handled.
+        """
+        # Check if signal was triggered (Unix) or poll size (Windows)
+        if sys.platform == "win32" or not self.terminal_size_changed:
+            # On Windows, check terminal size directly
+            new_width, new_height = self.get_terminal_size()
+            if new_width != self.terminal_width or new_height != self.terminal_height:
+                self.terminal_size_changed = True
+
+        if self.terminal_size_changed:
+            self.terminal_size_changed = False
+            new_width, new_height = self.get_terminal_size()
+
+            # Only handle if actually changed
+            if new_width != self.terminal_width or new_height != self.terminal_height:
+                self.terminal_width = new_width
+                self.terminal_height = new_height
+                self.max_display_rows = self.terminal_height - 9
+                return True
+
+        return False
+
     def get_terminal_size(self) -> Tuple[int, int]:
         """Get current terminal size."""
         try:
@@ -185,7 +229,7 @@ class VSRApp:
             return size.columns, size.lines
         except:
             return 80, 24
-    
+
     def clear_screen(self):
         """Clear the terminal screen."""
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -2102,33 +2146,32 @@ Press any key to continue...
                 return
             
             # Store initial terminal size
-            current_width, current_height = self.get_terminal_size()
-            
+            self.terminal_width, self.terminal_height = self.get_terminal_size()
+            self.max_display_rows = self.terminal_height - 9
+
             # Display initial screen
             self.display_screen()
-            
+
             # Main loop
             while True:
                 try:
-                    # Get user input using the proper method that handles arrow keys
-                    key = self._get_key_input()
-                    
-                    # Check for terminal resize after user input
-                    new_width, new_height = self.get_terminal_size()
-                    if new_width != current_width or new_height != current_height:
-                        current_width, current_height = new_width, new_height
+                    # Check for terminal resize (works on both Unix and Windows)
+                    if self._check_and_handle_resize():
                         # Terminal was resized, show message and redraw
                         self.clear_screen()
-                        print(f"🔄 Terminal resized to {new_width}x{new_height}")
+                        print(f"🔄 Terminal resized to {self.terminal_width}x{self.terminal_height}")
                         import time
                         time.sleep(0.5)  # Brief pause to show resize message
                         self.clear_screen()
                         self.display_screen()
-                    
+
+                    # Get user input using the proper method that handles arrow keys
+                    key = self._get_key_input()
+
                     # Handle the user input
                     if not self.handle_input(key):
                         break
-                    
+
                     # Redraw screen after handling input
                     self.display_screen()
                         

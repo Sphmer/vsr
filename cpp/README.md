@@ -1,6 +1,8 @@
 # VSR C++ - Terminal Data Visualizer
 
-A cross-platform C++ port of the VSR (Visual Studio Reader) terminal data visualizer with full feature parity to the Python version.
+**Version: 0.9.2**
+
+A cross-platform C++ port of the VSR terminal data visualizer with full feature parity to the Python version.
 
 ## Features
 
@@ -257,6 +259,7 @@ This project maintains the same license as the original VSR Python implementatio
 
 ## Version History
 
+- **v0.9.2**: Added optimized terminal resize detection (SIGWINCH on Unix, polling on Windows)
 - **v0.9.1**: Initial C++ port with full feature parity
 - **v0.9.0**: Python version baseline
 

@@ -1,2 +1,6 @@
 # VSCode
 .vscode/
+
+# Claude Code documentation
+CLAUDE.md
+.claude/

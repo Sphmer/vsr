@@ -1,6 +1,6 @@
 # VSR - Terminal Data Visualizer
 
-**Version: 0.9.1**
+**Version: 0.9.2**
 
 A comprehensive, vim-like terminal application for visualizing data from JSON and CSV files with advanced features including tree view, arrow key navigation, and intelligent configuration management.
 
@@ -45,7 +45,15 @@ A comprehensive, vim-like terminal application for visualizing data from JSON an
 - **Presentation Mode**: Create slide-based presentations of your data
 - **Smart Interface**: Header shows current slide info, footer shows navigation options
 
-### 🔄 Recent Improvements (v0.9.1)
+### 🔄 Recent Improvements
+
+**v0.9.2** (Latest)
+- **Optimized Terminal Resize Detection**: Signal-based resize handling on Unix/Linux/macOS (zero overhead)
+- **Instant Resize Response**: Automatic screen redraw when terminal is resized
+- **Cross-Platform Efficiency**: Uses SIGWINCH signals on Unix, smart polling on Windows
+- **Improved User Experience**: Clear resize notifications and seamless viewport adjustments
+
+**v0.9.1**
 - **Manual Column Selection Order**: Columns now appear in the exact order you select them manually
 - **Visual Order Indicators**: Selected columns show numbered indicators (1), (2), (3) for clarity
 - **CSV Column Order Preservation**: CSV files maintain their original header column order

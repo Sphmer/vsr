@@ -5,6 +5,8 @@
 #include <map>
 #include <memory>
 #include <unordered_map>
+#include <atomic>
+#include <csignal>
 #include "data_loader.h"
 #include "data_processor.h"
 #include "config_manager.h"
@@ -76,8 +78,18 @@ private:
     std::map<std::string, std::any> current_config_;
     bool config_loaded_;
 
+    // Terminal resize detection
+    static std::atomic<bool> terminal_resized_;
+    int last_terminal_width_;
+    int last_terminal_height_;
+
     // Helper methods
     void organizeSlides();
     void updateSlideData();
     bool isRunning_;
+
+    // Resize handling
+    void setupResizeHandler();
+    static void handleResizeSignal(int signum);
+    bool checkAndHandleResize();
 };

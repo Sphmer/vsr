@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(VSR VERSION 0.9.1 LANGUAGES CXX)
+project(VSR VERSION 0.9.2 LANGUAGES CXX)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
